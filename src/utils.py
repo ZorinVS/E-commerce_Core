@@ -4,7 +4,7 @@ import os
 from src.oop import Category, Product
 
 
-def make_the_python_objects_from_json(file_path: str = "data/products.json") -> tuple:
+def make_the_python_objects_from_json(file_path: str = 'data/products.json') -> tuple:
     """
     Возвращает картеж объектов полученный из JSON-файла.
 
@@ -13,7 +13,7 @@ def make_the_python_objects_from_json(file_path: str = "data/products.json") -> 
     """
     # Проверка существования файла
     if not os.path.exists(file_path):
-        print(f"Файл {file_path} не найден.")
+        print(f'Файл {file_path} не найден.')
         return None, None
 
     # Чтение JSON-файла
@@ -22,7 +22,7 @@ def make_the_python_objects_from_json(file_path: str = "data/products.json") -> 
             data_list = json.load(file)
 
     except Exception as e:
-        print(f"Ошибка чтения файла {file_path}: {e}.")
+        print(f'Ошибка чтения файла {file_path}: {e}.')
         return None, None
 
     # Пустые списки для сбора объектов
@@ -31,25 +31,25 @@ def make_the_python_objects_from_json(file_path: str = "data/products.json") -> 
 
     # Получение данных для создания объектов
     for item in data_list:
-        if not ("name" in item and "description" in item and "products" in item):
-            print("В JSON-файле отсутствуют необходимые поля.")
+        if not ('name' in item and 'description' in item and 'products' in item):
+            print('В JSON-файле отсутствуют необходимые поля.')
             return None, None
 
-        name_c = item["name"]
-        description_c = item["description"]
+        name_c = item['name']
+        description_c = item['description']
 
         products_list = list()
-        products = item["products"]
+        products = item['products']
 
         for i in products:
-            if not ("name" in i and "description" in i and "price" in i and "quantity" in i):
-                print("В JSON-файле отсутствуют необходимые поля.")
+            if not ('name' in i and 'description' in i and 'price' in i and 'quantity' in i):
+                print('В JSON-файле отсутствуют необходимые поля.')
                 return None, None
 
-            name_p = i["name"]
-            description_p = i["description"]
-            price_p = i["price"]
-            quantity_p = i["quantity"]
+            name_p = i['name']
+            description_p = i['description']
+            price_p = i['price']
+            quantity_p = i['quantity']
 
             # Создание экземпляра класса Product
             product = Product(name_p, description_p, price_p, quantity_p)

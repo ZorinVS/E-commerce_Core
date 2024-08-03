@@ -5,8 +5,8 @@ def test_product_init(products: tuple) -> None:
     :param products: Картеж экземпляров класса Product.
     :return: None.
     """
-    assert products[0].name == "Samsung Galaxy S23 Ultra"
-    assert products[0].description == "256GB, Серый цвет, 200MP камера"
+    assert products[0].name == 'Samsung Galaxy S23 Ultra'
+    assert products[0].description == '256GB, Серый цвет, 200MP камера'
     assert products[0].price == 180000.0
     assert products[0].quantity == 5
 

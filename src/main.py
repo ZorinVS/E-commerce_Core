@@ -2,7 +2,7 @@
 from src.oop import Category
 from src.utils import make_the_python_objects_from_json
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     # product1 = Product('Samsung Galaxy S23 Ultra', '256GB, Серый цвет, 200MP камера', 180000.0, 5)
     # product2 = Product('Iphone 15', '512GB, Gray space', 210000.0, 8)
     # product3 = Product('Xiaomi Redmi Note 11', '1024GB, Синий', 31000.0, 14)
@@ -29,13 +29,13 @@ if __name__ == "__main__":
     #     [product1, product2, product3],
     # )
     #
-    # print(category1.name == "Смартфоны")
+    # print(category1.name == 'Смартфоны')
     # print(category1.description)
     # print(len(category1.products))
     # print(category1.category_count)
     # print(category1.product_count)
     #
-    # product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
+    # product4 = Product('55" QLED 4K', 'Фоновая подсветка', 123000.0, 7)
     # category2 = Category(
     #     'Телевизоры',
     #     'Современный телевизор, который позволяет наслаждаться просмотром,\
@@ -53,16 +53,16 @@ if __name__ == "__main__":
     # print('\n')
 
     # ==================== Объекты из JSON-файла ============================================
-    print("====== Объекты из JSON-файла ======")
+    print('====== Объекты из JSON-файла ======')
 
     categories, _ = make_the_python_objects_from_json()
 
     if categories:
         for i in range(len(categories)):
-            print(f"{i + 1} категория:", categories[i].name)
-            print("Описание:", categories[i].description)
-            print("Количество продуктов:", len(categories[i].products))
+            print(f'{i + 1} категория:', categories[i].name)
+            print('Описание:', categories[i].description)
+            print('Количество продуктов:', len(categories[i].products))
             print()
 
-        print("Всего категорий:", Category.category_count)
-        print("Всего продуктов:", Category.product_count)
+        print('Всего категорий:', Category.category_count)
+        print('Всего продуктов:', Category.product_count)
