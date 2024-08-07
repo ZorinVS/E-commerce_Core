@@ -111,13 +111,9 @@ def to_json() -> tuple:
 
 @pytest.fixture
 def product_dict() -> tuple:
+    """Фикстура для тестирования создания продукта из словаря."""
     return (
         {"name": "Phone", "description": "Some description", "price": 10000, "quantity": 1},
         {"name": "Phone", "description": "Some description", "price": 20000, "quantity": 1},
         {"name": "Phone", "description": "Some description", "price": 5000, "quantity": 1},
     )
-
-
-# @pytest.fixture
-# def new_product() -> Product:
-#     return
