@@ -16,27 +16,6 @@ class Product:
 
         Product.all_products.append(self)
 
-    @property
-    def price(self) -> float:
-        """Геттер для получения цены."""
-        return self.__price
-
-    @price.setter
-    def price(self, amount: float) -> None:
-        """Сеттер для установки цены."""
-        if amount <= 0:
-            print("Цена не должна быть нулевая или отрицательная")
-        elif amount < self.__price:
-            difference = self.__price - amount
-            confirmation = input(f"Вы уверены, что хотите снизить цену на {difference} руб? (y/n): ").lower()
-            # self.__price = amount if confirmation == 'y' else print('Цена осталась прежней')
-            if confirmation == "y":
-                self.__price = amount
-            else:
-                print("Цена осталась прежней")
-        else:
-            self.__price = amount
-
     @classmethod
     def new_product(cls, product_dict: dict) -> "Product":
         """Класс-метод для создания нового продукта или обновления существующего."""
@@ -57,6 +36,27 @@ class Product:
 
         # Создание нового товара, если не найдено совпадений
         return cls(name, description, price, quantity)
+
+    @property
+    def price(self) -> float:
+        """Геттер для получения цены."""
+        return self.__price
+
+    @price.setter
+    def price(self, amount: float) -> None:
+        """Сеттер для установки цены."""
+        if amount <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+        elif amount < self.__price:
+            difference = self.__price - amount
+            confirmation = input(f"Вы уверены, что хотите снизить цену на {difference} руб? (y/n): ").lower()
+            # self.__price = amount if confirmation == 'y' else print('Цена осталась прежней')
+            if confirmation == "y":
+                self.__price = amount
+            else:
+                print("Цена осталась прежней")
+        else:
+            self.__price = amount
 
 
 class Category:
