@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from src.oop import Category, Product
+from src.oop import Category, Product, CategoryProductsIterator
 
 
 def test_product_init(products: tuple) -> None:
@@ -173,3 +173,48 @@ def test_product_set_negative_price(products: tuple) -> None:
 
     product.price = -10
     assert product.price == 100_000
+
+
+def test_product_str(products: tuple) -> None:
+    """
+    Тестирует отображение информации о продукте в виде строки.
+
+    :param products: Картеж экземпляров класса Product.
+    :return: None.
+    """
+    product = products[1]
+    assert str(product) == "Iphone 15, 210000 руб. Остаток: 8 шт."
+
+
+def test_category_str(categories: tuple) -> None:
+    """
+    Тестирует отображение информации о категории в виде строки.
+
+    :param categories: Картеж экземпляров класса Category.
+    :return: None.
+    """
+    category = categories[0]
+    assert str(category) == "Смартфоны, количество продуктов: 20 шт."
+
+
+def test_product_add(products):
+    """
+    Тестирует сложение товаров и получение полной стоимости всех товаров на складе.
+
+    :param products: Картеж экземпляров класса Product.
+    :return: None.
+    """
+    assert products[1] + products[2] == 2_541_000
+
+
+def test_category_products_iterator(categories: tuple) -> None:
+    """
+    Тестирует итератор продуктов категории.
+
+    :param categories: Картеж экземпляров класса Category.
+    :return: None.
+    """
+    category = categories[0]
+    expected = ["Samsung Galaxy S23 Ultra", "Iphone 15", '55" QLED 4K']
+
+    assert [product.name for product in CategoryProductsIterator(category)] == expected
