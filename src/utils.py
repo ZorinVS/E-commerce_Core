@@ -1,7 +1,8 @@
 import json
 import os
 
-from src.oop import Category, Product
+from src.category import Category
+from src.product import Product
 
 
 def make_the_python_objects_from_json(file_path: str = "data/products.json") -> tuple:

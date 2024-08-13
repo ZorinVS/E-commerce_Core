@@ -1,6 +1,8 @@
 from unittest.mock import patch
 
-from src.oop import Category, Product, CategoryProductsIterator
+import pytest
+
+from src.product import Product
 
 
 def test_product_init(products: tuple) -> None:
@@ -14,54 +16,6 @@ def test_product_init(products: tuple) -> None:
     assert products[0].description == "256GB, Серый цвет, 200MP камера"
     assert products[0].price == 180000.0  # Тест price-геттера
     assert products[0].quantity == 5
-
-
-def test_category_init(categories: tuple, category_info: tuple, products: tuple) -> None:
-    """
-    Тестирует корректность инициализации объектов класса Category.
-
-    :param categories: Картеж экземпляров класса Category.
-    :param category_info: Картеж атрибутов экземпляра класса Category.
-    :param products: Картеж экземпляров класса Product.
-    :return: None.
-    """
-    products_str = "Samsung Galaxy S23 Ultra, 180000 руб. Остаток: 5 шт.\n" "Iphone 15, 210000 руб. Остаток: 8 шт."
-
-    assert categories[0].name == category_info[0]
-    assert categories[0].description == category_info[1]
-    assert categories[0].products == products_str  # Тест products-геттера
-
-
-def test_category_category_count(category_count: int) -> None:
-    """
-    Тестирует подсчет количества продуктов.
-
-    :param category_count: Результат вызова метода category_count.
-    :return: None.
-    """
-    assert category_count == 2
-
-
-def test_category_product_count(product_count: int) -> None:
-    """
-    Тестирует подсчет количества категорий.
-
-    :param product_count: Результат вызова метода product_count.
-    :return: None.
-    """
-    assert product_count == 3
-
-
-def test_category_add_product(categories: tuple, products: tuple) -> None:
-    """
-    Тестирует метод add_product.
-
-    :param categories: Картеж экземпляров класса Category.
-    :param products: Картеж экземпляров класса Product.
-    :return: None.
-    """
-    categories[0].add_product(products[2])
-    assert Category.product_count == 4
 
 
 def test_new_product(product_dict: tuple) -> None:
@@ -186,18 +140,7 @@ def test_product_str(products: tuple) -> None:
     assert str(product) == "Iphone 15, 210000 руб. Остаток: 8 шт."
 
 
-def test_category_str(categories: tuple) -> None:
-    """
-    Тестирует отображение информации о категории в виде строки.
-
-    :param categories: Картеж экземпляров класса Category.
-    :return: None.
-    """
-    category = categories[0]
-    assert str(category) == "Смартфоны, количество продуктов: 20 шт."
-
-
-def test_product_add(products):
+def test_product_add(products: tuple) -> None:
     """
     Тестирует сложение товаров и получение полной стоимости всех товаров на складе.
 
@@ -207,14 +150,12 @@ def test_product_add(products):
     assert products[1] + products[2] == 2_541_000
 
 
-def test_category_products_iterator(categories: tuple) -> None:
+def test_product_add_error(products: tuple) -> None:
     """
-    Тестирует итератор продуктов категории.
+    Тестирует сложение товаров при котором вызывается исключение TypeError.
 
-    :param categories: Картеж экземпляров класса Category.
+    :param products: Картеж экземпляров класса Product.
     :return: None.
     """
-    category = categories[0]
-    expected = ["Samsung Galaxy S23 Ultra", "Iphone 15", '55" QLED 4K']
-
-    assert [product.name for product in CategoryProductsIterator(category)] == expected
+    with pytest.raises(TypeError):
+        products[1] + 70_000
