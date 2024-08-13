@@ -2,7 +2,8 @@ from src.lawn_grass_product import LawnGrass
 from src.category import Category
 from src.smartphone_product import Smartphone
 
-# from src.oop import CategoryProductsIterator, Product
+# from src.category import CategoryProductsIterator
+# from src.product import Product
 # from src.utils import make_the_python_objects_from_json
 
 if __name__ == "__main__":
