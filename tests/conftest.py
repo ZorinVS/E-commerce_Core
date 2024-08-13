@@ -1,6 +1,9 @@
 import pytest
 
-from src.oop import Category, Product
+from src.category import Category
+from src.lawn_grass_product import LawnGrass
+from src.product import Product
+from src.smartphone_product import Smartphone
 
 product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
 product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
@@ -111,9 +114,53 @@ def to_json() -> tuple:
 
 @pytest.fixture
 def product_dict() -> tuple:
-    """Фикстура для тестирования создания продукта из словаря."""
+    """
+    Фикстура для тестирования создания продукта из словаря.
+
+    :return: Данные в виде картежа словарей для создания продуктов.
+    """
     return (
         {"name": "Phone", "description": "Some description", "price": 10000, "quantity": 1},
         {"name": "Phone", "description": "Some description", "price": 20000, "quantity": 1},
         {"name": "Phone", "description": "Some description", "price": 5000, "quantity": 1},
     )
+
+
+@pytest.fixture
+def smartphone1() -> Smartphone:
+    """
+    Фикстура для тестирования класса Smartphone.
+
+    :return: Экземпляр класса Smartphone.
+    """
+    return Smartphone("Smartphone1", "Description1", 50_000.0, 5, 98.2, "Model X", 250, "Black")
+
+
+@pytest.fixture
+def smartphone2() -> Smartphone:
+    """
+    Фикстура для тестирования класса Smartphone.
+
+    :return: Экземпляр класса Smartphone.
+    """
+    return Smartphone("Smartphone2", "Description2", 40_000.0, 10, 78.2, "Model Y", 150, "White")
+
+
+@pytest.fixture
+def lawn_grass1() -> LawnGrass:
+    """
+    Фикстура для тестирования класса LawnGrass.
+
+    :return: Экземпляр класса LawnGrass.
+    """
+    return LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
+
+@pytest.fixture
+def lawn_grass2() -> LawnGrass:
+    """
+    Фикстура для тестирования класса LawnGrass.
+
+    :return: Экземпляр класса LawnGrass.
+    """
+    return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
